@@ -19,3 +19,7 @@ new Vue({
   template: '<App/>',
   components: { App }
 })
+// Vue.config.keyCodes.f1 = 112
+Vue.config.keyCodes = { // 配置键盘事件
+  enter: 13
+}

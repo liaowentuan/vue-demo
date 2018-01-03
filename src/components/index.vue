@@ -1,5 +1,9 @@
 <template>
-  <div>{{msg}}
+  <div>
+    <header></header>
+    <nav>
+
+    </nav>
   </div>
 </template>
 

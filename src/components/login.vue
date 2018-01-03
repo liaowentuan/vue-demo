@@ -2,12 +2,12 @@
   <div class="login">
     <el-row>
       <el-col :span="4" :offset="10">
-        <el-input placeholder="请输入用户名" v-model="user" clearable></el-input>
+        <input class="input" placeholder="请输入用户名" v-model="user"></input>
       </el-col>
     </el-row>
     <el-row>
       <el-col :span="4" :offset="10">
-        <el-input placeholder="请输入密码" v-model="password" clearable></el-input>
+        <input class="input" placeholder="请输入密码" v-model="password" @keyup.enter="login"></input>
       </el-col>
     </el-row>
     <el-row>
@@ -58,6 +58,20 @@
     margin-bottom: 10px;
   }
   .el-button{
+    width: 100%;
+  }
+  .input{
+    background-color: #fff;
+    border-radius: 4px;
+    border: 1px solid #dcdfe6;
+    box-sizing: border-box;
+    color: #606266;
+    display: inline-block;
+    font-size: inherit;
+    height: 32px;
+    line-height: 1;
+    outline: 0;
+    padding: 0 15px;
     width: 100%;
   }
 </style>
