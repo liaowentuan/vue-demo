@@ -1,10 +1,9 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import HelloWorld from '@/components/HelloWorld'
-import axios from 'axios'
+import index from '@/components/index'
+
 import login from '@/components/login'
 
-Vue.prototype.$http = axios
 Vue.use(Router)
 
 export default new Router({
@@ -15,9 +14,9 @@ export default new Router({
       component: login
     },
     {
-      path: '/',
-      name: 'HelloWorld',
-      component: HelloWorld
+      path: '/index',
+      name: 'index',
+      component: index
     }
   ]
 })

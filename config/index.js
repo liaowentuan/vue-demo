@@ -6,11 +6,18 @@ const path = require('path')
 
 module.exports = {
   dev: {
-
     // Paths
     assetsSubDirectory: 'static',
     assetsPublicPath: '/',
-    proxyTable: {},
+    proxyTable: { // 跨域配置代理
+      '/controller/': {
+        target: 'http://10.10.97.202',
+        changeOrigin: true,
+        pathRewrite: {
+          '^/controller': '/controller'
+        }
+      }
+    },
 
     // Various Dev Server settings
     host: 'localhost', // can be overwritten by process.env.HOST
