@@ -6,7 +6,11 @@ import ElementUI from 'element-ui'
 import 'element-ui/lib/theme-chalk/index.css'
 import router from './router'
 import axios from 'axios'
+import Vuex from 'vuex'
+import vTable from './compoment/table/table.js'
 
+Vue.use(vTable)
+Vue.use(Vuex)
 Vue.prototype.$http = axios
 Vue.use(ElementUI, { size: 'small' })
 Vue.config.productionTip = false
