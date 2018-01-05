@@ -19,7 +19,7 @@
             <input type="checkbox" v-model="gridOptionsList.selection" :id="key" :value="items">
           </label>
           <!--gridCell-->
-          <gridCell v-for="(item,index) in format(items,gridOptionsList.columnDefs)" :item="item" :key="index" class="gridCell"></gridCell>
+          <gridCell v-for="(item,index) in format(items,gridOptionsList.columnDefs)" :title="item" :name="bindName(item,items,gridOptionsList.columnDefs)" :item="item" :key="index" class="gridCell"></gridCell>
         </div>
       </div>
     </div>
@@ -78,12 +78,14 @@
         for (let i in items) {
           for (let c in arr) {
             if (arr[c] === i) {
-              arr[c] = items[i]
+              arr[c] = items[i] // 替换
             }
           }
         }
-        console.log(arr)
         return arr
+      },
+      bindName: function (item, data, indexData) {
+
       }
     },
     mounted: function () {
