@@ -2,12 +2,7 @@
   <div class="ui-grid" v-if="gridOptionsList">
     <!--grid头部-->
     <div class="gridHeader row">
-      <label v-if="gridOptionsList.multiSelect" for="key" class="multiSelectCheckBox gridCell">
-        <input type="checkbox" v-model="gridOptionsList.selectionAll" id="key" :value="gridOptionsList.data">
-      </label>
-      <div class="gridHeaderCell gridCell" v-for="item in gridOptionsList.columnDefs" :name="item.field">
-        {{item.displayName}}
-      </div>
+      <gridHeaderRowsCell :gridOptions="gridOptionsList"></gridHeaderRowsCell>
     </div>
     <!--grid主体-->
     <div class="gridBody row">
@@ -15,11 +10,11 @@
       <div v-for="(items,key) in gridOptionsList.data">
         <div class="row">
           <!--grid复选框-->
-          <label v-if="gridOptionsList.multiSelect" class="multiSelectCheckBox gridCell" :for="key">
+          <label v-if="gridOptionsList.multiSelect" :for="key" :style="{width:gridOptionsList.selectionWidth}" class="multiSelectCheckBox gridCell">
             <input type="checkbox" v-model="gridOptionsList.selection" :id="key" :value="items">
           </label>
           <!--gridCell-->
-          <gridCell v-for="(item,index) in format(items,gridOptionsList.columnDefs)" :title="item" :name="bindName(item,items,gridOptionsList.columnDefs)" :item="item" :key="index" class="gridCell"></gridCell>
+          <gridCell v-for="(item,index) in format(items,gridOptionsList.columnDefs)" :title="item" :name="bindName(item,items,gridOptionsList.columnDefs)" :item="item" :key="index" class="gridCell" :style="{width:gridOptionsList.bodyWidth[index] - 8 + 'px','text-align':'center'}"></gridCell>
         </div>
       </div>
     </div>
@@ -129,10 +124,5 @@
     min-height: 23px;
     margin-bottom: -1px;
     line-height: 23px;
-  }
-  .gridHeaderCell{
-    display: inline-block;
-    border:1px solid #000;
-    margin-left:-1px;
   }
 </style>
