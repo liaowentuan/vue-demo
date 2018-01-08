@@ -2,9 +2,6 @@
   <div>
     <header>
       <v-table :gridOptions='dataList' class='grid'></v-table>
-      <div>
-        <button @click='getData()'>getData</button>
-      </div>
     </header>
     <nav>
 
@@ -28,7 +25,7 @@ export default {
             displayName: '数据库名',
             cellTemplate: `
                         <div>
-                            <select v-model='item'></select>
+                            <button onclick="alert('123456')">click</button>
                         </div>
                     `
           },
@@ -80,6 +77,9 @@ export default {
       }).catch(function (res) {
         console.log(res)
       })
+    },
+    log () {
+      alert('123')
     }
   },
   mounted: function () {
@@ -97,8 +97,8 @@ export default {
         if (res.data.status === true) {
           this.dataList.data = [{'extlib_create_time': '2017-12-05 21:33:58', 'extlib_desc': '运行中', 'extlib_id': '4d5d368d-609c-4be3-8c6f-182ab31d0cc5', 'extlib_last_modify': '2017-12-20 15:11:35', 'extlib_name': '布控库1', 'extlib_number_of_target': '1', 'extlib_status': 1, 'src_id': 2}, {'extlib_create_time': '2017-12-21 11:39:34', 'extlib_desc': '阿凡开的是范', 'extlib_id': '4d5d368d-609c-4be3-8c6f-182ab31d0cc7', 'extlib_name': '撒谎打开的', 'extlib_status': 1, 'src_id': 1}, {'extlib_create_time': '2017-12-29 14:00:26', 'extlib_desc': '打开真的', 'extlib_id': '4d5d368d-609c-4be3-8c6f-182ab31d0cc9', 'extlib_name': '我的', 'extlib_status': 1, 'src_id': 3}]
         }
-      }).catch(function (res) {
-        console.log(res)
+      }).catch((res) => {
+        this.dataList.data = [{'extlib_create_time': '2017-12-05 21:33:58', 'extlib_desc': '运行中', 'extlib_id': '4d5d368d-609c-4be3-8c6f-182ab31d0cc5', 'extlib_last_modify': '2017-12-20 15:11:35', 'extlib_name': '布控库1', 'extlib_number_of_target': '1', 'extlib_status': 1, 'src_id': 2}, {'extlib_create_time': '2017-12-21 11:39:34', 'extlib_desc': '阿凡开的是范', 'extlib_id': '4d5d368d-609c-4be3-8c6f-182ab31d0cc7', 'extlib_name': '撒谎打开的1111111111111111111111111111111111111111111111111111111111111', 'extlib_status': 1, 'src_id': 1}, {'extlib_create_time': '2017-12-29 14:00:26', 'extlib_desc': '打开真的', 'extlib_id': '4d5d368d-609c-4be3-8c6f-182ab31d0cc9', 'extlib_name': '我的', 'extlib_status': 1, 'src_id': 3}]
       })
     })
   }
@@ -123,5 +123,15 @@ a {
 }
   .grid{
     width: 100%;
+  }
+  .red{
+    background: red;
+    height:25px;
+    display: flex;
+    justify-content: space-around;
+  }
+  .red > span {
+    width: 100%;
+    text-align:center;
   }
 </style>
