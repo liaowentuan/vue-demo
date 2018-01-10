@@ -4,7 +4,18 @@
       <v-table :gridOptions='dataList' class='grid'></v-table>
     </header>
     <nav>
-
+      <button type="button" name="button" @click="modelList.show=!modelList.show">show</button>
+      <vModel :mOptions="modelList">
+        <div slot="body">
+          this is body
+        </div>
+        <div slot="footer">
+          this is footer<button type="button" name="button" @click="log">确定</button>
+        </div>
+        <div slot="header">
+          this is modelHeader <button type="button" name="button" @click="modelList.show=!modelList.show">×</button>
+        </div>
+      </vModel>
     </nav>
   </div>
 </template>
@@ -58,6 +69,11 @@ export default {
         onselection: function (item) {
           console.log(item)
         }
+      },
+      modelList: {
+        width: '500px',
+        bgColor: '#fff',
+        show: false
       }
     }
   },
@@ -79,7 +95,7 @@ export default {
       })
     },
     log () {
-      alert('123')
+      console.log('123')
     }
   },
   mounted: function () {
