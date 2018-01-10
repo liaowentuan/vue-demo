@@ -5,7 +5,9 @@
     </header>
     <nav>
       <button type="button" name="button" @click="modelList.show=!modelList.show">show</button>
-      <vModel :mOptions="modelList">
+      <button type="button" name="button" @click="someMsg">msg</button>
+    </nav>
+    <vModel :mOptions="modelList">
         <div slot="body">
           this is body
         </div>
@@ -16,7 +18,6 @@
           this is modelHeader <button type="button" name="button" @click="modelList.show=!modelList.show">×</button>
         </div>
       </vModel>
-    </nav>
   </div>
 </template>
 
@@ -96,6 +97,9 @@ export default {
     },
     log () {
       console.log('123')
+    },
+    someMsg () {
+      this.$toopTips('tips 插件')
     }
   },
   mounted: function () {
