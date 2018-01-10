@@ -4,7 +4,7 @@ import gridHeaderRowsComponent from './gridHeaderRows.vue'
 import modelComponent from './model.vue'
 
 const vTable = {
-  install: function (Vue) {
+  install: function (Vue, options) {
     Vue.component('vTable', tableComponent)
     Vue.component('gridCell', tableCellComponent)
     Vue.component('gridHeaderRows', gridHeaderRowsComponent)
