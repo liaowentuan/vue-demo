@@ -1,6 +1,6 @@
 <template>
   <div class="model-context" v-show="mOptions.show" @click="mOptions.show=false">
-    <div :style="{width:mOptions.width,background:mOptions.bgColor}" class="model-body" @click="">
+    <div :style="{width:mOptions.width,background:mOptions.bgColor}" class="model-body" @click.stop="">
       <header>
         <slot name="header"></slot>
       </header>
