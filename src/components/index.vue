@@ -17,6 +17,7 @@
         </div>
       </vModel>
     </nav>
+    <button @click="test">haha</button>
   </div>
 </template>
 
@@ -96,6 +97,9 @@ export default {
     },
     log () {
       console.log('123')
+    },
+    test () {
+      this.$myMethod()
     }
   },
   mounted: function () {

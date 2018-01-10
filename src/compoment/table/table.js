@@ -9,6 +9,9 @@ const vTable = {
     Vue.component('gridCell', tableCellComponent)
     Vue.component('gridHeaderRows', gridHeaderRowsComponent)
     Vue.component('vModel', modelComponent)
+    Vue.prototype.$myMethod = (methodOptions) => {
+      console.log('haha')
+    }
   }
 }
 export default vTable
