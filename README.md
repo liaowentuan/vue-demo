@@ -1,6 +1,6 @@
 # clown
 
-> A vue.js learning project
+> A vue-table project
 
 ## Build Setup
 
