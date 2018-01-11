@@ -16,6 +16,6 @@ export default (msg, width = '300') => {
   document.body.appendChild(el)
   setTimeout(function () {
     let el = document.getElementsByClassName('toolTips')
-    document.removeChild(el)
+     el.parentNode.removeChild(el);
   }, 3000)
 }
