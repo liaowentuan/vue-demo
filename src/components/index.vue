@@ -99,7 +99,8 @@ export default {
       console.log('123')
     },
     someMsg () {
-      this.$toopTips('tips 插件')
+      let str = Math.random()
+      this.$toopTips('tips 插件' + str)
     }
   },
   mounted: function () {
