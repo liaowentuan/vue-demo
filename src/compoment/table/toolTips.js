@@ -13,6 +13,7 @@ export default (msg, width = '300') => {
   el.style.lineHeight = '28px'
   el.innerHTML = msg
   el.className = 'toolTips'
+  el.style.zIndex = 900
   document.body.appendChild(el)
   setTimeout(function () {
     let child = document.getElementsByClassName('toolTips')
