@@ -1,13 +1,20 @@
 <template>
   <div class="GridCells">
-    <slot>{{this.item}}</slot>
+    <slot>{{item}}</slot>
   </div>
 </template>
 
 <script>
   export default {
     name: 'gridCell',
-    props: ['item', 'options', 'keys', 'colDef']
+    props: ['rowIndex', 'columnIndex', 'options', 'item']
+    /* methods: {
+      format () {
+        debugger
+        console.log('grid-' + this.rowIndex + '-' + this.columnIndex)
+        return 'grid-' + this.rowIndex + '-' + this.columnIndex
+      }
+    } */
   }
 </script>
 <style scoped>

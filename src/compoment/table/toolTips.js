@@ -14,9 +14,11 @@ export default (msg, width = '300') => {
   el.innerHTML = msg
   el.className = 'toolTips'
   el.style.zIndex = 900
+  el.style.webkitBoxShadow = '2px 2px 3px #DDD'
+  el.style.boxShadow = '2px 2px 3px #DDD'
   document.body.appendChild(el)
   setTimeout(function () {
     let child = document.getElementsByClassName('toolTips')
     child[0].parentNode.removeChild(child[0])
-  }, 3000)
+  }, 2500)
 }

@@ -5,13 +5,13 @@
     <!--grid主体-->
     <div class="gridBody row">
       <!--grid表格-->
-      <div v-for="(items,key) in gridOptionsList.data" class="gridBodyRows row" :key="key">
+      <div v-for="(items,rowIndex) in gridOptionsList.data" class="gridBodyRows row" :key="rowIndex">
         <!--grid复选框-->
-        <label v-if="gridOptionsList.multiSelect" class="multiSelectCheckBox gridCell" :for="key">
-          <input type="checkbox" v-model="gridOptionsList.selection" :id="key" :value="items">
+        <label v-if="gridOptionsList.multiSelect" class="multiSelectCheckBox gridCell">
+          <input type="checkbox" v-model="gridOptionsList.selection" :id="rowIndex" :value="items">
         </label>
         <!--gridCell-->
-        <gridCell v-for="(item,index) in format(items,gridOptionsList.columnDefs)" :item="item" :colDef="gridOptionsList.columnDefs[index]['cellTemplate']" :keys="index" :options="gridOptionsList" :key="index" class="gridCell" v-html="gridOptionsList.columnDefs[index]['cellTemplate']?gridOptionsList.columnDefs[index]['cellTemplate']:item"></gridCell>
+        <gridCell v-for="(item,columnIndex) in format(items,gridOptionsList.columnDefs)" :options="gridOptionsList" :key="columnIndex" :rowIndex="rowIndex" class="gridCell" :columnIndex="columnIndex" :item="item"></gridCell>
       </div>
     </div>
     <!--grid脚部-->
@@ -74,9 +74,6 @@
           }
         }
         return arr
-      },
-      bindName: function (item, data, indexData) {
-
       }
     },
     mounted: function () {
