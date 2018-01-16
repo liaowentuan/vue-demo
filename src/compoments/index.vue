@@ -104,7 +104,10 @@ export default {
       this.$toopTips('tips 插件' + str)
     },
     prompt () {
-      this.$promptBox('haha')
+      this.$promptBox('haha', {
+        width: '10px',
+        height: '20px'
+      })
     }
   },
   mounted: function () {

@@ -3,10 +3,11 @@ import promptComponent from './prompt.vue'
 const PromptBox = Vue.extend(promptComponent)
 let instance
 
-export default (msg) => {
+export default (msg, options = {}) => {
   instance = new PromptBox({
     data: {
-      msg: msg
+      msg,
+      options
     }
   })
   instance.vm = instance.$mount()
