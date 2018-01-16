@@ -6,6 +6,7 @@
     <nav>
       <button type="button" name="button" @click="modelList.show=!modelList.show">show</button>
       <button type="button" name="button" @click="someMsg">msg</button>
+      <button type="button" name="button" @click="prompt">prompt</button>
     </nav>
     <vModel :mOptions="modelList">
         <div slot="body">
@@ -101,6 +102,9 @@ export default {
     someMsg () {
       let str = Math.random()
       this.$toopTips('tips 插件' + str)
+    },
+    prompt () {
+      this.$promptBox('haha')
     }
   },
   mounted: function () {

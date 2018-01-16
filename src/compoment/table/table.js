@@ -3,7 +3,7 @@ import tableCellComponent from './cell.vue'
 import gridHeaderRowsComponent from './gridHeaderRows.vue'
 import modelComponent from './model.vue'
 import toolTipsComponent from './toolTips.js'
-import promptComponent from './prompt.vue'
+import promptBox from './prompt.js'
 
 const vTable = {
   install: function (Vue) {
@@ -12,7 +12,7 @@ const vTable = {
     Vue.component('gridHeaderRows', gridHeaderRowsComponent)
     Vue.component('vModel', modelComponent)
     Vue.prototype.$toopTips = toolTipsComponent
-    Vue.component('prompt', promptComponent)
+    Vue.prototype.$promptBox = promptBox
   }
 }
 export default vTable
