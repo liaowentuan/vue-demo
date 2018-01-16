@@ -4,8 +4,21 @@
       <v-table :gridOptions='dataList' class='grid'></v-table>
     </header>
     <nav>
-
+      <button type="button" name="button" @click="modelList.show=!modelList.show">show</button>
+      <button type="button" name="button" @click="someMsg">msg</button>
+      <button type="button" name="button" @click="prompt">prompt</button>
     </nav>
+    <vModel :mOptions="modelList">
+        <div slot="body">
+          this is body
+        </div>
+        <div slot="footer">
+          this is footer<button type="button" name="button" @click="log">确定</button>
+        </div>
+        <div slot="header">
+          this is modelHeader <button type="button" name="button" @click="modelList.show=!modelList.show">×</button>
+        </div>
+      </vModel>
   </div>
 </template>
 
@@ -58,6 +71,11 @@ export default {
         onselection: function (item) {
           console.log(item)
         }
+      },
+      modelList: {
+        width: '500px',
+        bgColor: '#fff',
+        show: false
       }
     }
   },
@@ -79,7 +97,17 @@ export default {
       })
     },
     log () {
-      alert('123')
+      console.log('123')
+    },
+    someMsg () {
+      let str = Math.random()
+      this.$toopTips('tips 插件' + str)
+    },
+    prompt () {
+      this.$promptBox('haha', {
+        width: '10px',
+        height: '20px'
+      })
     }
   },
   mounted: function () {

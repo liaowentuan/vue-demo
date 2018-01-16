@@ -1,26 +1,17 @@
 <template>
   <div class="ui-grid" v-if="gridOptionsList">
     <!--grid头部-->
-    <div class="gridHeader row">
-      <label v-if="gridOptionsList.multiSelect" for="key" class="multiSelectCheckBox gridCell">
-        <input type="checkbox" v-model="gridOptionsList.selectionAll" id="key" :value="gridOptionsList.data">
-      </label>
-      <div class="gridHeaderCell gridCell" v-for="item in gridOptionsList.columnDefs" :name="item.field">
-        {{item.displayName}}
-      </div>
-    </div>
+    <gridHeaderRows :gridHeaderOptions="gridOptionsList"></gridHeaderRows>
     <!--grid主体-->
     <div class="gridBody row">
       <!--grid表格-->
-      <div v-for="(items,key) in gridOptionsList.data">
-        <div class="row">
-          <!--grid复选框-->
-          <label v-if="gridOptionsList.multiSelect" class="multiSelectCheckBox gridCell" :for="key">
-            <input type="checkbox" v-model="gridOptionsList.selection" :id="key" :value="items">
-          </label>
-          <!--gridCell-->
-          <gridCell v-for="(item,index) in format(items,gridOptionsList.columnDefs)" :item="item" :key="index" class="gridCell"></gridCell>
-        </div>
+      <div v-for="(items,rowIndex) in gridOptionsList.data" class="gridBodyRows row" :key="rowIndex">
+        <!--grid复选框-->
+        <label v-if="gridOptionsList.multiSelect" class="multiSelectCheckBox gridCell">
+          <input type="checkbox" v-model="gridOptionsList.selection" :id="rowIndex" :value="items">
+        </label>
+        <!--gridCell-->
+        <gridCell v-for="(item,columnIndex) in format(items,gridOptionsList.columnDefs)" :options="gridOptionsList" :key="columnIndex" :rowIndex="rowIndex" class="gridCell" :columnIndex="columnIndex" :item="item"></gridCell>
       </div>
     </div>
     <!--grid脚部-->
@@ -78,11 +69,10 @@
         for (let i in items) {
           for (let c in arr) {
             if (arr[c] === i) {
-              arr[c] = items[i]
+              arr[c] = items[i] // 替换
             }
           }
         }
-        console.log(arr)
         return arr
       }
     },
@@ -112,25 +102,35 @@
     display: table;
     clear: both;
   }
-  .multiSelectCheckBox{
-    width: 22px;
-    height: 100%;
-  }
   .gridCell{
     border: 1px solid #000;
     margin-left: -1px;
     height: 100%;
     font-size: 16px;
-    vertical-align: baseline;
-    float: left;
     padding: 3px 4px;
     min-height: 23px;
     margin-bottom: -1px;
     line-height: 23px;
+    width: 100%;
+    text-align: center;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+  }
+  .multiSelectCheckBox{
+    min-width: 20px;
+    max-width: 20px;
+    height: 100%;
   }
   .gridHeaderCell{
     display: inline-block;
     border:1px solid #000;
     margin-left:-1px;
+  }
+  .gridBodyRows{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: space-between;
   }
 </style>
