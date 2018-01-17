@@ -32,25 +32,16 @@ export default {
         multiSelect: true,
         data: [],
         columnDefs: [
-          {field: 'extlib_create_time', displayName: '数据库创建时间'},
           {
             field: 'extlib_name',
-            displayName: '数据库名',
-            cellTemplate: `
-                        <div>
-                            <button onclick="alert('123456')">click</button>
-                        </div>
-                    `
+            displayName: '数据库名'
           },
           {
             field: 'extlib_desc',
-            displayName: '描述',
-            cellTemplate: `
-                        <div style='position:relative;z-index=0'>
-                            <input type='radio' >
-                        </div>
-                    `
-          }
+            displayName: '描述'
+          },
+          {field: 'extlib_create_time', displayName: '数据库创建时间'},
+          {field: 'extlib_create_time', displayName: '操作'}
         ],
         onChagePage: (newPage, newSize) => {
           this.$http({
@@ -80,20 +71,14 @@ export default {
     }
   },
   methods: {
-    getData () {
+    getData (page, size) {
       this.$http({
-        method: 'POST',
-        url: '/controller/login/user/admin',
-        data: {
-          user_name: 'admin',
-          u_passwd: 'admin'
-        }
+        method: 'GET',
+        url: '/controller/extlibs?extlib_name=&page=' + page + '&pagesize=' + size
       }).then((res) => {
-        if (res.data.status === true) {
-          this.dataList.data = ['haha', 'hehe', 'xixi']
-        }
-      }).catch(function (res) {
-        console.log(res)
+        this.dataList.data = res.data.extlibrarys
+      }).catch((res) => {
+        this.datalist.data = [{'extlib_desc': 'sadfasdfasd', 'extlib_id': '07c19f1d-9c05-4a34-b331-7d9ad5f26719', 'extlib_name': '布控库3', 'extlib_status': 1, 'src_id': 20}, {'extlib_create_time': '2018-01-17 16:16:16', 'extlib_desc': '布控库-9', 'extlib_id': '3fda3ef7-66c2-48c9-80c0-50d3651c9500', 'extlib_last_modify': '2018-01-17 16:16:16', 'extlib_name': '新的布控库9', 'extlib_status': 0, 'src_id': 9}, {'extlib_create_time': '2018-01-17 16:00:53', 'extlib_desc': '布控库-6', 'extlib_id': '9d9c2e43-cb02-4e87-98dd-e2c338817497', 'extlib_last_modify': '2018-01-17 16:00:53', 'extlib_name': '新的布控库6', 'extlib_status': 0, 'src_id': 6}, {'extlib_create_time': '2018-01-17 15:23:35', 'extlib_desc': '布控库-5', 'extlib_id': 'f065b216-d82e-409c-98d3-8503bf4a157e', 'extlib_last_modify': '2018-01-17 15:23:35', 'extlib_name': '新的布控库5', 'extlib_status': 0, 'src_id': 5}, {'extlib_create_time': '2018-01-17 14:42:58', 'extlib_desc': '布控库-4', 'extlib_id': 'fc8b7f1d-dbaa-4464-9440-77b3008704ef', 'extlib_last_modify': '2018-01-17 14:42:58', 'extlib_name': '新的布控库4', 'extlib_status': 0, 'src_id': 4}]
       })
     },
     log () {
@@ -112,22 +97,7 @@ export default {
   },
   mounted: function () {
     this.$nextTick(function () {
-    // Code that will run only after the
-    // entire view has been rendered
-      this.$http({
-        method: 'POST',
-        url: '/controller/login/user/admin',
-        data: {
-          user_name: 'admin',
-          u_passwd: 'admin'
-        }
-      }).then((res) => {
-        if (res.data.status === true) {
-          this.dataList.data = [{'extlib_create_time': '2017-12-05 21:33:58', 'extlib_desc': '运行中', 'extlib_id': '4d5d368d-609c-4be3-8c6f-182ab31d0cc5', 'extlib_last_modify': '2017-12-20 15:11:35', 'extlib_name': '布控库1', 'extlib_number_of_target': '1', 'extlib_status': 1, 'src_id': 2}, {'extlib_create_time': '2017-12-21 11:39:34', 'extlib_desc': '阿凡开的是范', 'extlib_id': '4d5d368d-609c-4be3-8c6f-182ab31d0cc7', 'extlib_name': '撒谎打开的', 'extlib_status': 1, 'src_id': 1}, {'extlib_create_time': '2017-12-29 14:00:26', 'extlib_desc': '打开真的', 'extlib_id': '4d5d368d-609c-4be3-8c6f-182ab31d0cc9', 'extlib_name': '我的', 'extlib_status': 1, 'src_id': 3}]
-        }
-      }).catch((res) => {
-        this.dataList.data = [{'extlib_create_time': '2017-12-05 21:33:58', 'extlib_desc': '运行中', 'extlib_id': '4d5d368d-609c-4be3-8c6f-182ab31d0cc5', 'extlib_last_modify': '2017-12-20 15:11:35', 'extlib_name': '布控库1', 'extlib_number_of_target': '1', 'extlib_status': 1, 'src_id': 2}, {'extlib_create_time': '2017-12-21 11:39:34', 'extlib_desc': '阿凡开的是范', 'extlib_id': '4d5d368d-609c-4be3-8c6f-182ab31d0cc7', 'extlib_name': '撒谎打开的1111111111111111111111111111111111111111111111111111111111111', 'extlib_status': 1, 'src_id': 1}, {'extlib_create_time': '2017-12-29 14:00:26', 'extlib_desc': '打开真的', 'extlib_id': '4d5d368d-609c-4be3-8c6f-182ab31d0cc9', 'extlib_name': '我的', 'extlib_status': 1, 'src_id': 3}]
-      })
+      this.getData(1, 20)
     })
   }
 }
