@@ -119,7 +119,7 @@ li {
 a {
   color: #42b983;
 }
-  .grid{
-    width: 100%;
-  }
+.grid{
+  width: 100%;
+}
 </style>
