@@ -122,14 +122,4 @@ a {
   .grid{
     width: 100%;
   }
-  .red{
-    background: red;
-    height:25px;
-    display: flex;
-    justify-content: space-around;
-  }
-  .red > span {
-    width: 100%;
-    text-align:center;
-  }
 </style>
