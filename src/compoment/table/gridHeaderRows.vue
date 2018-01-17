@@ -1,9 +1,9 @@
 <template>
-  <div class="gridHeader">
-    <label v-if="gridHeaderOptions.multiSelect" for="key" class="multiSelectCheckBox gridCell">
+  <div class="table-tr">
+    <label v-if="gridHeaderOptions.multiSelect" for="key" class="table-td table-label">
       <input type="checkbox" v-model="gridHeaderOptions.selectionAll" id="key" :value="gridHeaderOptions.data">
     </label>
-    <div class="gridHeaderCell gridCell" v-for="item in gridHeaderOptions.columnDefs" :name="item.field">
+    <div class="table-td" v-for="item in gridHeaderOptions.columnDefs" :name="item.field">
       {{item.displayName}}
     </div>
   </div>
@@ -15,30 +15,16 @@
   }
 </script>
 <style scoped>
-.gridHeader{
-  width: 100%;
-  height: 100%;
-  display: flex;
-  justify-content: space-between;
+.table-tr{
+  display: table-row;
 }
-.gridCell{
-  border: 1px solid #000;
-  margin-left: -1px;
-  height: 100%;
-  font-size: 16px;
-  padding: 3px 4px;
-  min-height: 23px;
-  margin-bottom: -1px;
-  line-height: 23px;
-  width: 100%;
+.table-td{
   text-align: center;
-  white-space: nowrap;
-  text-overflow: ellipsis;
-  overflow: hidden;
+  display: table-cell;
+  border-top:1px solid #ddd;
+  border-left:1px solid #ddd;
 }
-.multiSelectCheckBox{
-  min-width: 20px;
-  max-width: 20px;
-  height: 100%;
+.table-label{
+  width: 40px;
 }
 </style>

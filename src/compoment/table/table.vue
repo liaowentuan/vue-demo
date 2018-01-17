@@ -1,18 +1,16 @@
 <template>
-  <div class="ui-grid" v-if="gridOptionsList">
+  <div class="table" v-if="gridOptionsList">
     <!--grid头部-->
     <gridHeaderRows :gridHeaderOptions="gridOptionsList"></gridHeaderRows>
     <!--grid主体-->
-    <div class="gridBody row">
       <!--grid表格-->
-      <div v-for="(items,rowIndex) in gridOptionsList.data" class="gridBodyRows row" :key="rowIndex">
-        <!--grid复选框-->
-        <label v-if="gridOptionsList.multiSelect" class="multiSelectCheckBox gridCell">
-          <input type="checkbox" v-model="gridOptionsList.selection" :id="rowIndex" :value="items">
-        </label>
-        <!--gridCell-->
-        <gridCell v-for="(item,columnIndex) in format(items,gridOptionsList.columnDefs)" :options="gridOptionsList" :key="columnIndex" :rowIndex="rowIndex" class="gridCell" :columnIndex="columnIndex" :item="item"></gridCell>
-      </div>
+    <div v-for="(items,rowIndex) in gridOptionsList.data"  class="table-tr" :key="rowIndex">
+      <!--grid复选框-->
+      <label v-if="gridOptionsList.multiSelect" class="table-td table-label" >
+        <input type="checkbox" v-model="gridOptionsList.selection" :id="rowIndex" :value="items">
+      </label>
+      <!--gridCell-->
+      <gridCell v-for="(item,columnIndex) in format(items,gridOptionsList.columnDefs)" :options="gridOptionsList" :key="columnIndex" :rowIndex="rowIndex" class="table-td" :columnIndex="columnIndex" :item="item"></gridCell>
     </div>
     <!--grid脚部-->
     <div class="gridFooter row">
@@ -89,48 +87,22 @@
   }
 </script>
 <style scoped>
-  .ui-grid{
+  .table{
     width: 100%;
-    padding-bottom: 1px;
-  }
-  .row::before{
-    content: "";
     display: table;
+    border-bottom:1px solid #ddd;
+    border-right:1px solid #ddd;
   }
-  .row::after{
-    content: "";
-    display: table;
-    clear: both;
+  .table-tr{
+    display: table-row;
   }
-  .gridCell{
-    border: 1px solid #000;
-    margin-left: -1px;
-    height: 100%;
-    font-size: 16px;
-    padding: 3px 4px;
-    min-height: 23px;
-    margin-bottom: -1px;
-    line-height: 23px;
-    width: 100%;
+  .table-td{
     text-align: center;
-    white-space: nowrap;
-    text-overflow: ellipsis;
-    overflow: hidden;
+    display: table-cell;
+    border-top:1px solid #ddd;
+    border-left:1px solid #ddd;
   }
-  .multiSelectCheckBox{
-    min-width: 20px;
-    max-width: 20px;
-    height: 100%;
-  }
-  .gridHeaderCell{
-    display: inline-block;
-    border:1px solid #000;
-    margin-left:-1px;
-  }
-  .gridBodyRows{
-    width: 100%;
-    height: 100%;
-    display: flex;
-    justify-content: space-between;
+  .table-label{
+    width: 40px;
   }
 </style>
