@@ -11,7 +11,7 @@ module.exports = {
     assetsPublicPath: '/',
     proxyTable: { // 跨域配置代理
       '/controller/': {
-        target: 'http://10.10.97.202',
+        target: 'http://127.0.0.1:5000',
         changeOrigin: true,
         pathRewrite: {
           '^/controller': '/controller'
@@ -52,10 +52,10 @@ module.exports = {
 
   build: {
     // Template for index.html
-    index: path.resolve(__dirname, '../dist/index.html'),
+    index: path.resolve(__dirname, '/var/www/html/index.html'),
 
     // Paths
-    assetsRoot: path.resolve(__dirname, '../dist'),
+    assetsRoot: path.resolve(__dirname, '/var/www/html'),
     assetsSubDirectory: 'static',
     assetsPublicPath: '/',
 

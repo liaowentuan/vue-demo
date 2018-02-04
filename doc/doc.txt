@@ -43,3 +43,12 @@ methods: {
     }
 
 
+service apache2 start
+
+service mysql start
+
+service apache2 stop
+
+service mysql stop
+
+# sudo pip install urllib3
