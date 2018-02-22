@@ -1,7 +1,9 @@
 #!/usr/bin/env python3
 user = input("用户名:")
 upwd = input("密码:")
-uage = int(input("年龄:"))
+uage = input("年龄:")
+if uage.isdigit():
+  print("这是一个整数")
 info = """
 ----- user {0} -----
 usr:{0}
