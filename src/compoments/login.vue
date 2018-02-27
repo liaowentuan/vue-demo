@@ -32,15 +32,15 @@
       login () {
         this.$http({
           method: 'POST',
-          // url: '/controller/login/user/admin',
-          url: '/controller/hello',
+          url: '/controller/login/user/admin',
+          // url: '/controller/hello',
           data: {
             user_name: this.user,
             u_passwd: this.password,
             url: 11
           }
         }).then(function (res) {
-          if (res.data.status === 'true') {
+          if (res.data.status === true) {
             window.location.href = '#/index'
           }
         }).catch(function (res) {

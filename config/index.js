@@ -11,7 +11,8 @@ module.exports = {
     assetsPublicPath: '/',
     proxyTable: { // 跨域配置代理
       '/controller/': {
-        target: 'http://127.0.0.1:5000',
+        target: 'http://10.10.97.202',
+        //target: 'http://127.0.0.1:5000',
         changeOrigin: true,
         pathRewrite: {
           '^/controller': '/controller'
